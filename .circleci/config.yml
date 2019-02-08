@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      #this would make a instance of node to run the app
+      - image: circleci/node:10.15.0
+    steps:
+      - checkout
+      - run:
+          name: install-npm-packages
+          command: npm install
+      - run:
+          name: run-tests
+          command: npm test
