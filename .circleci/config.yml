@@ -1,15 +1,29 @@
 version: 2
 jobs:
   build:
+
     docker:
       #this would make a instance of node to run the app
       - image: circleci/node:10.15.0
+      
     steps:
       #checkouts the current commit
       - checkout
+
+      # restores the cache of particular keys
+      - restore_cache: 
+         key: npm-deps-{{ checksum "package.json" }}
+
       - run:
           name: install-npm-packages
           command: npm install
+
       - run:
           name: run-tests
-          command: npm test 
+          command: npm test
+
+      - save_cache:
+          # Caches dependencies with a cache key
+          # template for an environment variable
+          key: npm-deps-{{ checksum "package.json" }}
+          path: ./node_modules
