@@ -5,7 +5,7 @@ jobs:
     docker:
       #this would make a instance of node to run the app
       - image: circleci/node:10.15.0
-      
+
     steps:
       #checkouts the current commit
       - checkout
@@ -26,4 +26,5 @@ jobs:
           # Caches dependencies with a cache key
           # template for an environment variable
           key: npm-deps-{{ checksum "package.json" }}
-          path: ./node_modules
+          paths: 
+            - ./node_modules
