@@ -26,5 +26,4 @@ jobs:
           # Caches dependencies with a cache key
           # template for an environment variable
           key: npm-deps-{{ checksum "package.json" }}
-          paths: 
-            - ./node_modules
+          paths: ./node_modules
