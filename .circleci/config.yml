@@ -5,6 +5,7 @@ jobs:
       #this would make a instance of node to run the app
       - image: circleci/node:10.15.0
     steps:
+      #checkouts the current commit
       - checkout
       - run:
           name: install-npm-packages
